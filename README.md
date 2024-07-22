@@ -22,3 +22,10 @@ When `my_initial_view` gets different data, a sensor (`update_downstream_partiti
 * Using duckdb locally with a `dagster dev` deployment, you will get concurrent write errors. On a production instance of Dagster, you can set concurrency limits, and of course production data warehouses can handle concurrent workloads as well.
 * The sensor function that polls the table could be expensive as the number of dates grows. This could be addressed by setting a ceiling (e.g., only look back for the most recent 100 days)
 
+
+## Steps to Implement
+
+* run `dagster dev`
+* turn on the sensor
+* materialize `my_initial_view`
+* if you want to see the logic work, comment out the first block and uncomment the second in `my_intial_view`, materialize `my_initial_view` to get the new data in, and the sensor will pick up changes
